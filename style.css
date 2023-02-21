@@ -5,7 +5,7 @@
 
 @font-face {
     font-family: Mynerve-Regular;
-    src: url("./Mynerve/Mynerve-Regular.ttf");
+    src: url("./Font/Mynerve-Regular.ttf");
 }
 
 :root {
@@ -16,13 +16,66 @@
 }
 
 body {
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    height: 100%;
+    width: 100%;
+}
+
+.container {
     font-family: Mynerve-Regular, sans-serif;
     color: var(--text-color);
-    display: grid;
-    grid-row: repeat(auto-fill, 1fr);
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin-top: 40px;
+    min-width: 90%;
+}
+
+.add-book-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+}
+
+.show-form-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.show-form-btn {
+    height: 30px;
+    background-color: var(--normal-btn-color);
+    border-radius: 5px;
+    border: 0;
+    font-size: 90%;
+    font-weight: bold;
+    width: 70%;
+}
+
+.show-form-btn:hover {
+    background-color: #23c9b0;
+    cursor: pointer;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
 }
 
 .library-container {
-    background-color: var(--main-color);
-    
+     
 }

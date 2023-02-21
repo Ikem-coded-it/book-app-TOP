@@ -11,8 +11,12 @@ function Book(title, author, pages, read) {
     this.read = read
 }
 
+let libraryContainer = document.querySelector('.library-container');
+let form = document.querySelector(".form");
+let newBookBtn = document.querySelector(".show-form-btn");
+let inputs = document.querySelectorAll("input");
+
 function getInput() {
-    const form = document.querySelector("#form");
     form.addEventListener("submit", function(e) {
         e.preventDefault()
         let title = e.target.title.value;
@@ -21,21 +25,19 @@ function getInput() {
 
         let read = e.target.read.checked;
         if (read != true) {
-            e.target.read.value = "not read"
+            e.target.read.value = "Not read"
         }
         
         let readValue = e.target.read.value;
         const newBook = new Book(title, author, pages, readValue)
         library.push(newBook)
         appendNewBook(library[library.length - 1])
+        hideForm()
     })
 }
 
-let libraryContainer = document.querySelector('.library-container');
-
 function displayBook() {
     library.forEach(book => {
-        console.log(book)
         const bookContainer = document.createElement("div")
         const title = document.createElement("h3")
         const author = document.createElement("p")
@@ -80,6 +82,20 @@ function appendNewBook(book) {
     bookContainer.appendChild(readToggleButton)
     bookContainer.appendChild(deleteButton)
     libraryContainer.appendChild(bookContainer);
+}
+
+newBookBtn.addEventListener("click", function(e) {
+    form.classList.toggle("show")
+    e.target.classList.toggle("hide")
+})
+
+function hideForm() {
+    inputs.forEach(input => { 
+        if (input.type != "checkbox") input.value = ''
+        if (input.checked = true) input.checked = false;
+    })
+    form.classList.toggle("show") 
+    newBookBtn.classList.toggle("show")
 }
 
 getInput()
