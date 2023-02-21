@@ -1,7 +1,7 @@
 let library = [
-    {title: "One piece", author: "Eiichiro Oda", pages: 10000, read: "read"},
-    {title: "Naruto", author: "Masashi Kishimoto", pages: 2000, read: "not read"},
-    {title: "Avatar: Last Air Bender", author: "Michael Dante", pages: 200, read: "not read"},
+    {title: "One piece", author: "Eiichiro Oda", pages: 10000, read: "Read"},
+    {title: "Naruto", author: "Masashi Kishimoto", pages: 2000, read: "Not read"},
+    {title: "Avatar: Last Air Bender", author: "Michael Dante", pages: 200, read: "Not read"},
 ]
 
 function Book(title, author, pages, read) {
@@ -41,16 +41,20 @@ function displayBook() {
         const author = document.createElement("p")
         const pages = document.createElement("div")
         const readToggleButton = document.createElement("button")
+        const deleteButton = document.createElement("button")
+        deleteButton.classList.add("delete-btn")
         
         title.innerText = book.title;
         author.innerText = book.author;
         pages.innerText = book.pages;
         readToggleButton.innerText = book.read
+        deleteButton.innerText = "Delete"
          
         bookContainer.appendChild(title)
         bookContainer.appendChild(author)
         bookContainer.appendChild(pages)
         bookContainer.appendChild(readToggleButton)
+        bookContainer.appendChild(deleteButton)
         libraryContainer.appendChild(bookContainer);
     })
 }
@@ -61,16 +65,20 @@ function appendNewBook(book) {
     const author = document.createElement("p")
     const pages = document.createElement("div")
     const readToggleButton = document.createElement("button")
+    const deleteButton = document.createElement("button")
+    deleteButton.classList.add("delete-btn")
     
     title.innerText = book.title;
     author.innerText = book.author;
     pages.innerText = book.pages;
     readToggleButton.innerText = book.read
+    deleteButton.innerText = "Delete"
         
     bookContainer.appendChild(title)
     bookContainer.appendChild(author)
     bookContainer.appendChild(pages)
     bookContainer.appendChild(readToggleButton)
+    bookContainer.appendChild(deleteButton)
     libraryContainer.appendChild(bookContainer);
 }
 

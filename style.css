@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: Mynerve-Regular;
+    src: url("./Mynerve/Mynerve-Regular.ttf");
+}
+
+:root {
+    --main-color: #1e293b;
+    --text-color: #f4f4f5;
+    --delete-btn-color: #dc2626;
+    --normal-btn-color: #5eead4;
+}
+
+body {
+    font-family: Mynerve-Regular, sans-serif;
+    color: var(--text-color);
+    display: grid;
+    grid-row: repeat(auto-fill, 1fr);
+}
+
+.library-container {
+    background-color: var(--main-color);
+    
+}
