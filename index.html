@@ -16,32 +16,34 @@
             </div>
 
             <div class="form-container">
-                <form action="" class="form show">
-                    <div>
+                <form action="" class="form hide">
+                    <div class="form-row">
                         <label for="title">Title</label>
-                        <input type="text" id="title" name="title" required>
+                        <input type="text" id="title" name="title" maxlength="100" required>
                     </div>
-                    <div>
+                    <div class="form-row">
                         <label for="author">Author</label>
-                        <input type="text" id="author" name="author" required>
+                        <input type="text" id="author" name="author" maxlength="100" required>
                     </div>
-                    <div>
+                    <div class="form-row">
                         <label for="pages">Pages</label>
-                        <input type="number" id="pages" name="pages" required>
+                        <input type="number" id="pages" name="pages" max="2000" required>
                     </div>
-                    <div>
+                    <div class="form-row">
                         <label for="read">Have you read it?</label>
                         <input type="checkbox" id="read" value="Read" name="read">
                     </div>
 
-                    <button type="submit">Add book</button>
+                    <div class="form-row">
+                        <button type="submit">Add book</button>
+                    </div>
                 </form>
             </div>
 
         </div>
 
         <div class="library-container">
-            <h2>Library</h2>
+            <div class="library-title">Library</div>
         </div>
     </div>
 </body>

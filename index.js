@@ -11,6 +11,35 @@ function Book(title, author, pages, read) {
     this.read = read
 }
 
+function appendBookCard(book) {
+    const bookContainer = document.createElement("div")
+    bookContainer.classList.add("book-card")
+    const title = document.createElement("h3")
+    const author = document.createElement("p")
+    const pages = document.createElement("div")
+    const readToggleButton = document.createElement("button")
+    readToggleButton.classList.add("read-btn")
+    const deleteButton = document.createElement("button")
+    deleteButton.classList.add("delete-btn")
+    deleteButton.dataset.libraryIndex = library.indexOf(book)
+    const bookBtnContainer = document.createElement("div");
+    bookBtnContainer.classList.add("book-btn-container")
+    bookBtnContainer.appendChild(readToggleButton)
+    bookBtnContainer.appendChild(deleteButton)
+    
+    title.innerText = book.title;
+    author.innerText = 'by' + ' ' + book.author;
+    pages.innerText = book.pages + ' ' + 'pages';
+    readToggleButton.innerText = book.read
+    deleteButton.innerText = "Delete"
+        
+    bookContainer.appendChild(title)
+    bookContainer.appendChild(author)
+    bookContainer.appendChild(pages)
+    bookContainer.appendChild(bookBtnContainer)
+    libraryContainer.appendChild(bookContainer);
+}
+
 let libraryContainer = document.querySelector('.library-container');
 let form = document.querySelector(".form");
 let newBookBtn = document.querySelector(".show-form-btn");
@@ -31,57 +60,15 @@ function getInput() {
         let readValue = e.target.read.value;
         const newBook = new Book(title, author, pages, readValue)
         library.push(newBook)
-        appendNewBook(library[library.length - 1])
+        appendBookCard(library[library.length - 1])
         hideForm()
     })
 }
 
 function displayBook() {
     library.forEach(book => {
-        const bookContainer = document.createElement("div")
-        const title = document.createElement("h3")
-        const author = document.createElement("p")
-        const pages = document.createElement("div")
-        const readToggleButton = document.createElement("button")
-        const deleteButton = document.createElement("button")
-        deleteButton.classList.add("delete-btn")
-        
-        title.innerText = book.title;
-        author.innerText = book.author;
-        pages.innerText = book.pages;
-        readToggleButton.innerText = book.read
-        deleteButton.innerText = "Delete"
-         
-        bookContainer.appendChild(title)
-        bookContainer.appendChild(author)
-        bookContainer.appendChild(pages)
-        bookContainer.appendChild(readToggleButton)
-        bookContainer.appendChild(deleteButton)
-        libraryContainer.appendChild(bookContainer);
+        appendBookCard(book)
     })
-}
-
-function appendNewBook(book) {
-    const bookContainer = document.createElement("div")
-    const title = document.createElement("h3")
-    const author = document.createElement("p")
-    const pages = document.createElement("div")
-    const readToggleButton = document.createElement("button")
-    const deleteButton = document.createElement("button")
-    deleteButton.classList.add("delete-btn")
-    
-    title.innerText = book.title;
-    author.innerText = book.author;
-    pages.innerText = book.pages;
-    readToggleButton.innerText = book.read
-    deleteButton.innerText = "Delete"
-        
-    bookContainer.appendChild(title)
-    bookContainer.appendChild(author)
-    bookContainer.appendChild(pages)
-    bookContainer.appendChild(readToggleButton)
-    bookContainer.appendChild(deleteButton)
-    libraryContainer.appendChild(bookContainer);
 }
 
 newBookBtn.addEventListener("click", function(e) {
@@ -96,6 +83,10 @@ function hideForm() {
     })
     form.classList.toggle("show") 
     newBookBtn.classList.toggle("show")
+}
+
+function deleteBook() {
+
 }
 
 getInput()

@@ -29,6 +29,7 @@ body {
     color: var(--text-color);
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 50px;
     margin-top: 40px;
     min-width: 90%;
@@ -54,7 +55,8 @@ body {
     border: 0;
     font-size: 90%;
     font-weight: bold;
-    width: 70%;
+    min-width: 120px;
+    max-width: 160px;
 }
 
 .show-form-btn:hover {
@@ -68,6 +70,36 @@ body {
     align-items: center;
 }
 
+.form-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.form-row label {
+    font-size: 25px;
+}
+
+.form-row input {
+    width: 120%;
+    height: 20px;
+    border-radius: 5px;
+    background-color: var(--text-color);
+}
+
+.form-row button {
+    height: 30px;
+    background-color: var(--normal-btn-color);
+    border-radius: 5px;
+    border: 0;
+    font-size: 90%;
+    font-weight: bold;
+    min-width: 120px;
+    max-width: 160px;
+}
+
 .hide {
     display: none;
 }
@@ -77,5 +109,88 @@ body {
 }
 
 .library-container {
-     
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(15%, 35%));
+    grid-auto-rows: auto;
+    gap: 10px;
+}
+
+.library-container .library-title {
+    grid-column: 1 / 4;
+    font-size: 40px;
+}
+
+.library-container .book-card {
+    margin-left: 10px;
+    background-color: #5c17fc;
+    border-radius: 5px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.book-card h3 {
+    font-size: 30px;
+    overflow-wrap: break-word;
+}
+
+.book-btn-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.read-btn {
+    width: 45%;
+    height: 40px;
+}
+
+.delete-btn {
+    width: 45%;
+    height: 40px;
+}
+
+@media only screen and (max-width: 700px) {
+    .library-container {
+        width: 95%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .library-container .library-title {
+        width: 100%;
+    }
+
+    .library-container .book-card {
+        width: 42%;
+        margin: 0;
+        margin-bottom: 20px;
+        padding: 2px;
+    }
+
+    .book-card h3 {
+        font-size: 20px;
+    }
+
+    .book-btn-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .read-btn {
+        width: 90%;
+        height: 40px;
+    }
+
+    .delete-btn {
+        width: 90%;
+        height: 40px;
+    }
 }
