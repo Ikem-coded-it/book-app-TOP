@@ -19,9 +19,14 @@ function appendBookCard(book) {
     const pages = document.createElement("div")
     const readToggleButton = document.createElement("button")
     readToggleButton.classList.add("read-btn")
+
     const deleteButton = document.createElement("button")
     deleteButton.classList.add("delete-btn")
     deleteButton.dataset.libraryIndex = library.indexOf(book)
+    deleteButton.addEventListener("click", (e) => {
+        deleteBook(e.target.dataset.libraryIndex, deleteButton)
+    })
+
     const bookBtnContainer = document.createElement("div");
     bookBtnContainer.classList.add("book-btn-container")
     bookBtnContainer.appendChild(readToggleButton)
@@ -85,8 +90,10 @@ function hideForm() {
     newBookBtn.classList.toggle("show")
 }
 
-function deleteBook() {
-
+function deleteBook(index, button) {
+    library.splice(index, 1)
+    const bookCard = button.parentElement.parentElement;
+    bookCard.remove();
 }
 
 getInput()

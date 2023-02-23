@@ -150,6 +150,11 @@ body {
 .delete-btn {
     width: 45%;
     height: 40px;
+    background-color: #646060;
+    border-radius: 5px;
+    color: var(--text-color);
+    font-weight: bold;
+    box-shadow: 3px 3px 5px black;
 }
 
 @media only screen and (max-width: 700px) {
