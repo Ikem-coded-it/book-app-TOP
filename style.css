@@ -11,7 +11,6 @@
 :root {
     --main-color: #1e293b;
     --text-color: #f4f4f5;
-    --delete-btn-color: #dc2626;
     --normal-btn-color: #5eead4;
 }
 
@@ -87,6 +86,12 @@ body {
     height: 20px;
     border-radius: 5px;
     background-color: var(--text-color);
+    font-size: 17px;
+    font-family: Mynerve-Regular;
+}
+
+.form-row input:hover {
+    border-color: var(--normal-btn-color);
 }
 
 .form-row button {
@@ -98,6 +103,11 @@ body {
     font-weight: bold;
     min-width: 120px;
     max-width: 160px;
+}
+
+.form-row button:hover {
+    background-color: #23c9b0;
+    cursor: pointer;
 }
 
 .hide {
@@ -132,6 +142,10 @@ body {
     padding: 10px;
 }
 
+.library-container .book-card:hover {
+    background-color: #6c2efc;
+}
+
 .book-card h3 {
     font-size: 30px;
     overflow-wrap: break-word;
@@ -145,9 +159,32 @@ body {
 .read-btn {
     width: 45%;
     height: 40px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 0;
+    box-shadow: 3px 3px 5px black;
+}
+
+.read-btn-read {
+    border: 0;
+    width: 45%;
+    height: 40px;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #bef264;
+}
+
+.read-btn-notread {
+    border: 0;
+    width: 45%;
+    height: 40px;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #ffeaea;
 }
 
 .delete-btn {
+    border: 0;
     width: 45%;
     height: 40px;
     background-color: #646060;

@@ -1,9 +1,6 @@
-let library = [
-    {title: "One piece", author: "Eiichiro Oda", pages: 10000, read: "Read"},
-    {title: "Naruto", author: "Masashi Kishimoto", pages: 2000, read: "Not read"},
-    {title: "Avatar: Last Air Bender", author: "Michael Dante", pages: 200, read: "Not read"},
-]
+let library = []
 
+// Book constructor
 function Book(title, author, pages, read) {
     this.title = title
     this.author = author
@@ -11,14 +8,45 @@ function Book(title, author, pages, read) {
     this.read = read
 }
 
+Book.prototype.changeStatus = function(button) {
+    if (this.read != "Read" && button.innerText != "Read") {
+        this.read = "Read"
+        button.innerText = "Read"
+        button.classList.remove("read-btn-notread")
+        button.classList.toggle("read-btn-read")
+        return
+    }  
+
+    this.read = "Not read"
+    button.innerText = "Not read"
+    button.classList.remove("read-btn-read")
+    button.classList.toggle("read-btn-notread")
+}
+
+ // Create default library books
+library.push(new Book("One piece", "Eiichiro Oda", 10000, "Read"))
+library.push(new Book("Naruto", "Masashi Kishimoto", 2000, "Not read"))
+library.push(new Book("Avatar: Last Air Bender", "Michael Dante", 200, "Read"))
+
+// Create and append elements for single book
 function appendBookCard(book) {
     const bookContainer = document.createElement("div")
     bookContainer.classList.add("book-card")
     const title = document.createElement("h3")
     const author = document.createElement("p")
     const pages = document.createElement("div")
+
     const readToggleButton = document.createElement("button")
     readToggleButton.classList.add("read-btn")
+    if (book.read == "Read") {
+        readToggleButton.classList.add("read-btn-read")
+    } else if (book.read == "Not read")  {
+        readToggleButton.classList.add("read-btn-notread")
+    }
+    readToggleButton.dataset.libraryIndex = library.indexOf(book)
+    readToggleButton.addEventListener("click", (e) => {
+        book.changeStatus(readToggleButton)
+    })
 
     const deleteButton = document.createElement("button")
     deleteButton.classList.add("delete-btn")
@@ -45,11 +73,13 @@ function appendBookCard(book) {
     libraryContainer.appendChild(bookContainer);
 }
 
+
 let libraryContainer = document.querySelector('.library-container');
 let form = document.querySelector(".form");
 let newBookBtn = document.querySelector(".show-form-btn");
 let inputs = document.querySelectorAll("input");
 
+// Get new book input from form
 function getInput() {
     form.addEventListener("submit", function(e) {
         e.preventDefault()
@@ -78,7 +108,6 @@ function displayBook() {
 
 newBookBtn.addEventListener("click", function(e) {
     form.classList.toggle("show")
-    e.target.classList.toggle("hide")
 })
 
 function hideForm() {
